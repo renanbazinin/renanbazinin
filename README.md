@@ -25,7 +25,7 @@ I love working on:
 ---
 
 ### GitHub Stats  
-![Renan's GitHub stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=radical&hide_rank=true)  
+![Renan's GitHub stats](https://github-readme-stats.vercel.app/api?username=renanbazinin&show_icons=true&theme=radical&hide_rank=true)  
 
 ---
 
