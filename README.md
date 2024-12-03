@@ -1,8 +1,8 @@
 # Hi there! 👋 I'm Renan
 
 I'm a Computer Science student and a passionate developer. 🚀  
-I love working on:  
-- 💻 Algorithms and Graph Visualizations  
+I love working on ש:  
+- 💻 Fun Projects
 - 📊 Data Science and Deep Learning  
 - 🌐 Web Development  
 
