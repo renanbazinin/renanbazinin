@@ -1,7 +1,7 @@
 # Hi there! 👋 I'm Renan
 
 I'm a Computer Science student and a passionate developer. 🚀  
-I love working on ש:  
+I love working on:  
 - 💻 Fun Projects
 - 📊 Data Science and Deep Learning  
 - 🌐 Web Development  
