@@ -15,7 +15,8 @@ I love working on:
 
 ### Featured Projects  
 - [All News](https://renanbazinin.github.io/allNews/public/index.html) - View news from multiple source
-- [Graph Visualizer](https://renanbazinin.github.io/Graphs-For-Algorithms/) - Interactive visualization of graph algorithms.  
+- [Graph Visualizer](https://renanbazinin.github.io/Graphs-For-Algorithms/) - Interactive visualization of graph algorithms.
+- [Mail Saver And Label For Deletion  ](https://github.com/renanbazinin/MailSaver-Bot) - Use this app for save locacly old emails and their files.
 - And more....
 ---
 
