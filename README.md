@@ -1,6 +1,6 @@
 # Hi there! 👋 I'm Renan
 
-![Visit My Site!]([https://github-readme-stats.vercel.app/api?username=renanbazinin&show_icons=true&theme=radical&hide_rank=true](https://renanbazinin.github.io/))  
+[Visit My Site!]([https://github-readme-stats.vercel.app/api?username=renanbazinin&show_icons=true&theme=radical&hide_rank=true](https://renanbazinin.github.io/))  
 
 
 I'm a Computer Science student and a passionate developer. 🚀  
