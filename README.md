@@ -32,6 +32,11 @@ I love working on:
 ### GitHub Stats  
 ![Renan's GitHub stats](https://github-readme-stats.vercel.app/api?username=renanbazinin&show_icons=true&theme=radical&hide_rank=true)  
 
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=renanbazinin&show_icons=true&theme=radical" alt="Renanbazinin GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=renanbazinin&layout=compact&theme=radical" alt="Renanbazinin's Top Languages" />
+  </p>
+
 ---
 
 ![Visitor Count](https://komarev.com/ghpvc/?username=renanbazinin&color=green)  
