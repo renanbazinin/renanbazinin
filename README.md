@@ -32,7 +32,7 @@ I love working on:
 ### GitHub Stats  
 ![Renan's GitHub stats](https://github-readme-stats.vercel.app/api?username=renanbazinin&show_icons=true&theme=radical&hide_rank=true)  
 
-![Renan's GitHub stats](https://github-readme-stats.vercel.app/api/top-langs/?username=renanbazinin)  
+![Renan's GitHub stats](https://github-readme-stats.vercel.app/api/top-langs/?username=renanbazinin&layout=compact&theme=radical)  
 
 
 ---
