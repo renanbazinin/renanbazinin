@@ -32,8 +32,7 @@ I love working on:
 ### GitHub Stats  
 ![Renan's GitHub stats](https://github-readme-stats.zcy.dev/api?username=renanbazinin&show_icons=true&theme=radical)
 
-![Renan's streak](https://github-readme-streak-stats.herokuapp.com/?user=renanbazinin&theme=dark)
-
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=renanbazinin)
 
 ---
 
