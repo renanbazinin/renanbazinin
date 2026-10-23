@@ -1,0 +1,133 @@
+# Builds the generated images that README.md shows and publishes them to the `output` branch:
+#
+#   life-dark.svg, life-light.svg          my contribution calendar playing Conway's Game of Life
+#                                          (scripts/life_graph.py, standard-library Python)
+#   stats-dark.svg, stats-light.svg        GitHub stats card       } stats-organization/github-readme-stats-action,
+#   langs-dark.svg, langs-light.svg        top languages card      } the maintained successor of github-readme-stats
+#   breakout-dark.svg, breakout-light.svg  Breakout played on the contribution graph (cyprieng/github-breakout)
+#
+# README.md links to them as https://raw.githubusercontent.com/renanbazinin/renanbazinin/output/<file>.
+# The branch is force-pushed as a single commit, so main's history stays clean. Every step may fail on
+# its own (an API hiccup, for example); the previous version of that image is then kept.
+#
+# Third-party actions are pinned to full commit SHAs; the comment next to each one names the release.
+name: Profile images
+
+on:
+  schedule:
+    - cron: "17 3 * * *"   # daily at 03:17 UTC (about 06:17 in Israel), away from the busy top of the hour
+  workflow_dispatch:       # the "Run workflow" button in the Actions tab
+  push:
+    branches: [main]
+    paths:                 # also runs right after these files are first committed
+      - scripts/life_graph.py
+      - .github/workflows/profile.yml
+
+permissions:
+  contents: write          # needed to push the output branch; no other secrets are used
+
+concurrency:
+  group: profile-images
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OWNER: ${{ github.repository_owner }}
+      STATS: "username=${{ github.repository_owner }}&show_icons=true&include_all_commits=true&rank_icon=github&hide=stars&show=prs_merged,reviews&card_width=420"
+      LANGS: "username=${{ github.repository_owner }}&layout=compact&langs_count=6&hide=html,css&size_weight=0.5&count_weight=0.5&card_width=360"
+      DARK: "&bg_color=0d1117&border_color=30363d&title_color=7aa2f7&text_color=c9d1d9&icon_color=bb9af7&ring_color=7aa2f7"
+      LIGHT: "&bg_color=ffffff&border_color=d0d7de&title_color=0969da&text_color=1f2328&icon_color=8250df&ring_color=0969da"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Game of Life on the contribution calendar
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/life_graph.py --user "$OWNER" --out dist
+
+      - name: Stats card (dark)
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: ${{ env.STATS }}${{ env.DARK }}
+          path: dist/stats-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: "true"   # never publish a "Something went wrong" card
+
+      - name: Stats card (light)
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: ${{ env.STATS }}${{ env.LIGHT }}
+          path: dist/stats-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Top languages (dark)
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: ${{ env.LANGS }}${{ env.DARK }}
+          path: dist/langs-dark.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Top languages (light)
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: ${{ env.LANGS }}${{ env.LIGHT }}
+          path: dist/langs-light.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: "true"
+
+      - name: Breakout on the contribution graph
+        continue-on-error: true
+        uses: cyprieng/github-breakout@60c43dca3a1361fbc9fb9bb533b5193296345c4f # v1.2.4
+        with:
+          github_username: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          output_path: breakout   # writes breakout/light.svg and breakout/dark.svg
+
+      - name: Collect the Breakout images
+        continue-on-error: true
+        run: |
+          mkdir -p dist
+          mv breakout/dark.svg dist/breakout-dark.svg
+          mv breakout/light.svg dist/breakout-light.svg
+
+      - name: Publish to the output branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p dist
+          ls -l dist
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          work="$(mktemp -d)"
+          cd "$work"
+          git init -q -b output
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Start from the previous images, so a step that failed today keeps yesterday's file.
+          if git fetch -q --depth=1 "$remote" output 2>/dev/null; then
+            git checkout -q FETCH_HEAD -- .
+          fi
+          cp "$GITHUB_WORKSPACE"/dist/*.svg . 2>/dev/null || true
+          if [ -z "$(ls -A -- *.svg 2>/dev/null)" ]; then
+            echo "::error::No images were generated."
+            exit 1
+          fi
+          git add -A
+          git commit -q -m "Regenerate profile images"
+          git push -q -f "$remote" HEAD:output
+          echo "Published:" && ls -1 *.svg
