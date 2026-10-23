@@ -63,7 +63,7 @@ I'm a software developer with a **B.Sc. in Computer Science from MTA** (the Acad
 | **[NEOTRIS](https://renanbazinin.github.io/tetris/)**<br><sub>[code](https://github.com/renanbazinin/tetris)</sub> | A fast, guideline-accurate Tetris (SRS, 7-bag, hold, T-spins, back-to-back) that installs as an offline PWA. No ads, no sign-up.<br><sub>Vanilla JS, Service Worker</sub> |
 
 <details>
-<summary><b>Even more</b>: games, AI tools, CS study tools, research and utilities</summary>
+<summary><b>Even more</b>: games, AI tools, CS study tools and utilities</summary>
 <br>
 
 **Games**
@@ -76,16 +76,14 @@ I'm a software developer with a **B.Sc. in Computer Science from MTA** (the Acad
 - **[pdfToMarkdownWithLLM](https://github.com/renanbazinin/pdfToMarkdownWithLLM)**: turns lecture PDFs into Markdown with LaTeX, using Gemini.
 - **[geminiPrep](https://github.com/renanbazinin/geminiPrep)**: a Gemini and Vertex AI lab with English and Hebrew guides.
 
-**CS study tools and research**
+**CS study tools**
 - **[Graphs for Algorithms](https://renanbazinin.github.io/Graphs-For-Algorithms/)**: interactive BFS, DFS, Dijkstra, Bellman-Ford, topological sort and SCC.
 - **[SQL Playground](https://renanbazinin.github.io/sql-playground/)**: practice SQL against SQLite running in the browser (sql.js / WebAssembly).
 - **[While-language interpreter](https://renanbazinin.github.io/whileCompiler-/)** and **[Tree Visualization Tool](https://renanbazinin.github.io/Tree-Visualization-Tool/)**: built for the computability course.
 - **[RefQuiz](https://renanbazinin.github.io/RefQuiz/)**: bilingual Hebrew/English quizzes that point to the exact moment in the lecture video.
-- **[DNAlign visualization](https://renanbazinin.github.io/DNAlign/)**: a team genome-alignment project; I built the backend wrapper, the Docker Compose setup, the GCP deployment and this ancient-DNA synteny visualization.
 
 **Utilities**
 - **[FillFlow](https://renanbazinin.github.io/FillFlow/)**: fill and sign PDF forms in the browser, free.
-- **[CV Version Explorer](https://renanbazinin.github.io/cv-version-viewer/)**: my CV lives in git, so I built a viewer for its history.
 - **[MailSaver-Bot](https://github.com/renanbazinin/MailSaver-Bot)**: saves large Gmail messages and their attachments locally, then labels them for deletion.
 
 </details>
