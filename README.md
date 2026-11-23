@@ -177,8 +177,8 @@ HEAD  merge    bsc -> main: B.Sc. done, full-stack developer in fintech
 
 Off the clock I love RTS games and used to play World of Warcraft, which explains the real-time strategy game in my repos.
 <p align="center">
-  <a href="https://renanbazinin.github.io/forktown/">
-    <img alt="My little rooftop" src="https://forktown-presence.vercel.app/presence.svg" width="100%">
+  <a href="https://forktown-presence.vercel.app/">
+    <img alt="Forktown after dark. Open the rooftop at the current Jerusalem time." src="assets/forktown-after-dark.svg" width="100%">
   </a>
 </p>
 
